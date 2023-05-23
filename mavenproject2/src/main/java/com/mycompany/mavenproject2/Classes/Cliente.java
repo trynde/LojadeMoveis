@@ -10,7 +10,7 @@ package com.mycompany.mavenproject2.Classes;
  */
 public class Cliente {
     
-    private int cpf;
+    private String cpf;
     private String sexo;
     private String dataNasciment;
     private String email;
@@ -22,7 +22,8 @@ public class Cliente {
 
     public Cliente() {
     }
-     public Cliente(int cpf, String sexo, String dataNasciment, String email, int cep, String endereco, int num, String bairro, String nome) {
+
+    public Cliente(String cpf, String sexo, String dataNasciment, String email, int cep, String endereco, int num, String bairro, String nome) {
         this.cpf = cpf;
         this.sexo = sexo;
         this.dataNasciment = dataNasciment;
@@ -34,11 +35,11 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -105,4 +106,5 @@ public class Cliente {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    
 }

@@ -5,6 +5,7 @@
  */
 package com.mycompany.mavenproject2;
 
+import com.mycompany.mavenproject2.Classes.Cliente;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -54,7 +55,7 @@ public class TelaC extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        txtNumero1 = new javax.swing.JTextField();
+        txtBairro = new javax.swing.JTextField();
         SexM = new javax.swing.JRadioButton();
         SexF = new javax.swing.JRadioButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -147,7 +148,7 @@ public class TelaC extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Sexo", "CPF", "CEP", "Email", "Endereço"
+                "Nome", "Sexo", "CPF", "CEP", "Email", "Endereço", "Bairro"
             }
         ));
         jScrollPane2.setViewportView(Cadastro);
@@ -219,7 +220,7 @@ public class TelaC extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel19)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNumero1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -272,7 +273,7 @@ public class TelaC extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtNumero1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel19))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -309,7 +310,8 @@ public class TelaC extends javax.swing.JFrame {
         String cep = txtCEP.getText();
         String cp = txtCPF.getText();
         String data = txtNacimento.getText();
-        String selecao = "";
+        String bairro = txtBairro.getText();
+        String sexo = "";
 
         if ( txtNome.getText().trim().equals("")){
 
@@ -339,19 +341,21 @@ public class TelaC extends javax.swing.JFrame {
         }
         
         if(SexM.isSelected()){
-            selecao += "Masculino";  
+            sexo += "Masculino";  
         } else {
-            selecao += "Feminino";
+            sexo += "Feminino";
         }
         
         DefaultTableModel modelo = (DefaultTableModel) Cadastro.getModel();
         modelo.addRow(new String[]{nome,
-                                    selecao,
+                                    sexo,
                                     cp,
                                     cep,
                                     email,
-                                    end
+                                    end,
+                                    bairro
         });
+        Cliente obj = new Cliente(cp, sexo, data, email, WIDTH, end, NORMAL, bairro, nome);
     }//GEN-LAST:event_btnConfimarActionPerformed
 
     private void txtNacimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNacimentoActionPerformed
@@ -430,6 +434,7 @@ public class TelaC extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField txtBairro;
     private javax.swing.JFormattedTextField txtCEP;
     private javax.swing.JFormattedTextField txtCPF;
     private javax.swing.JTextField txtEmail;
@@ -437,6 +442,5 @@ public class TelaC extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtNacimento;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNumero;
-    private javax.swing.JTextField txtNumero1;
     // End of variables declaration//GEN-END:variables
 }
